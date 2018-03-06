@@ -158,6 +158,7 @@ public class RSSignatureCaptureMainView extends LinearLayout implements OnClickL
       file.delete();
     }
 
+    this.signatureView.setBackgroundColor(Color.WHITE);
     try {
 
       Log.d("React Signature", "Save file-======:" + saveFileInExtStorage);
@@ -185,6 +186,8 @@ public class RSSignatureCaptureMainView extends LinearLayout implements OnClickL
       reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "topChange", event);
     } catch (Exception e) {
       e.printStackTrace();
+    } finally {
+      this.signatureView.setBackgroundColor(Color.TRANSPARENT);
     }
   }
 
