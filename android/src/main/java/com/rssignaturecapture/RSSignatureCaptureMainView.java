@@ -59,10 +59,6 @@ public class RSSignatureCaptureMainView extends LinearLayout implements OnClickL
         ViewGroup.LayoutParams.MATCH_PARENT));
   }
 
-  public RSSignatureCaptureView getSignatureView() {
-    return signatureView;
-  }
-
   public void setSaveFileInExtStorage(Boolean saveFileInExtStorage) {
     this.saveFileInExtStorage = saveFileInExtStorage;
   }
@@ -158,6 +154,7 @@ public class RSSignatureCaptureMainView extends LinearLayout implements OnClickL
       file.delete();
     }
 
+    this.signatureView.setBackgroundColor(Color.WHITE);
     try {
 
       Log.d("React Signature", "Save file-======:" + saveFileInExtStorage);
@@ -185,6 +182,8 @@ public class RSSignatureCaptureMainView extends LinearLayout implements OnClickL
       reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "topChange", event);
     } catch (Exception e) {
       e.printStackTrace();
+    } finally {
+      this.signatureView.setBackgroundColor(Color.TRANSPARENT);
     }
   }
 
